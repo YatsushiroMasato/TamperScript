@@ -1,5 +1,6 @@
 // ==UserScript==
 // @name         share point script
+// @namespace    https://github.com/YatsushiroMasato/TamperScript
 // @version      0.1
 // @description  利便性向上させちゃう
 // @match        https://medibasys.sharepoint.com/org/syslog/Lists/Posts/EditPost.aspx?*
