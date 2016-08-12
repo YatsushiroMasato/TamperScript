@@ -21,9 +21,6 @@
     });
   }
 
-
-  // var imageUrl = 'http://freebies-db.com/wp-content/uploads/2014/02/free-textures-seamless-polygon-backgrounds-graphicburger.jpg';
-
   // 背景変更
   $('body').css({
       'background-image': 'url('+ imageUrl +')',
@@ -45,7 +42,6 @@
 
 })(jQuery.noConflict(true));
 
-$ = jQuery.noConflict();
 $(document).ajaxComplete(function(){
 
   // タイムライン削除
