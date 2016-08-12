@@ -6,8 +6,7 @@
 // @include      https://company.talknote.com/mediba.jp/*
 // @author       Yatsushiro
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
-// @require      http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js
-// @grunt        none
+// @grant        none
 // ==/UserScript==
 (function($) {
 
@@ -21,6 +20,16 @@
         'background-position': 'left top'
     });
   }
+
+
+  // var imageUrl = 'http://freebies-db.com/wp-content/uploads/2014/02/free-textures-seamless-polygon-backgrounds-graphicburger.jpg';
+
+  // 背景変更
+  $('body').css({
+      'background-image': 'url('+ imageUrl +')',
+      'background-size': 'cover',
+      'background-position': 'left top'
+  });
 
   // 左サイドメニューの位置修正と背景透過
   $('#left_nav').css({
@@ -36,6 +45,7 @@
 
 })(jQuery.noConflict(true));
 
+$ = jQuery.noConflict();
 $(document).ajaxComplete(function(){
 
   // タイムライン削除
