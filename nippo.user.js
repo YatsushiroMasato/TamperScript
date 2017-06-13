@@ -94,9 +94,6 @@
 
     // var my_pj = 'KK-16008103@Cygnus 開発;KH-00014010@販管費：広告システム開発部;JU-00000001-0xx@2017年度auサービス運用保守業務;';
 
-    // webStrageに保存
-    // window.localStorage.setItem('myPJ', my_pj);
-
   } else {
     // PJがwebStrageから取り出せた場合
     // 行末の ; を削除した後、配列化
