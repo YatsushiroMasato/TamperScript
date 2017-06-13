@@ -40,15 +40,15 @@
   $('<style/>').text(css_style).appendTo($('head'));
 
   var save_strage_contents = `
-  <div id="add_pj">PJ登録</div>
   <div class="list-group list-group-flush" id="PJsave" style="display: none;">
     <div class="list-group-item">
-      <input type="text" class="form-control mb-3" id="pj_code" placeholder="プロジェクトコード">
-      <input type="text" class="form-control mb-3" id="pj_name" placeholder="プロジェクト名">
+      <input type="text" class="form-control mb-3" id="pj_code" placeholder="プロジェクトコード　例）KK-16008103　とか　JU-00000001-0xx　など">
+      <input type="text" class="form-control mb-3" id="pj_name" placeholder="プロジェクト名 例) 販管費：広告システム開発部　など">
       <a class="text-right btn btn-primary">追加</a>
       <label class="pull-right btn btn-danger">PJ全削除</label>
     </div>
   </div>
+  <div id="add_pj">PJ登録</div>
   `;
   $('body').append(save_strage_contents);
 
