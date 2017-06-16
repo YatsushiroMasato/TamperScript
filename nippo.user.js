@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         にっぽうをてきとうに。
 // @namespace    https://github.com/YatsushiroMasato/TamperScript
-// @version      ばーじょんつー！
+// @version      ばーじょんすりー！
 // @description  日報を簡単につけることができるかんじのやつ
 // @author       Masato Yatsushiro <yatsushiro@mediba.jp>
 // @match        http://mediba-pjtweb01/ip_web/scripts/*
