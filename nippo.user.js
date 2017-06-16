@@ -70,34 +70,39 @@
 
 
   var save_strage_contents = `
-  <div class="container" id="PJsave" style="display: none;">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-addon">
-            プロジェクトコード
-          </span>
-          <input type="text" class="form-control" id="pj_code" placeholder="例）KK-16008103　とか　JU-00000001-0xx　など">
-        </div>
-      </div>
+<div class="container">
+  <div class="col-lg-12" id="PJlist" style="display: none; transition: 0.2s;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>プロジェクトコード</th>
+          <th>プロジェクト名</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-12" id="PJsave" style="display: none; transition: 0.2s;">
+    <div class="col-lg-8 input-group" style="padding-top:10px;">
+      <span class="input-group-addon">
+        プロジェクトコード
+      </span>
+      <input type="text" class="form-control" id="pj_code" placeholder="例）KK-16008103　とか　JU-00000001-0xx　など">
     </div>
-    <div class="row" style="padding-top:10px;">
-      <div class="col-lg-6">
-        <div class="input-group">
-          <span class="input-group-addon">
-            プロジェクト名
-          </span>
-          <input type="text" class="form-control" id="pj_name" placeholder="例) 販管費：広告システム開発部　など">
-        </div>
-      </div>
+    <div class="col-lg-8 input-group" style="padding-top:10px;">
+      <span class="input-group-addon">
+        プロジェクト名
+      </span>
+      <input type="text" class="form-control" id="pj_name" placeholder="例) 販管費：広告システム開発部　など">
     </div>
-    <div class="row" style="padding-top:10px;">
-      <div class="col-lg-6">
-        <a class="pull-right btn btn-primary">追加</a>
-        <label class="btn btn-danger">PJ全削除</label>
-      </div>
+    <div class="col-lg-8" style="padding-top:10px; padding-bottom:10px;">
+      <a class="btn btn-primary">追加</a>
     </div>
   </div>
+</div>
   `;
   $('#wrap').prepend(save_strage_contents);
 
@@ -137,6 +142,7 @@
     <div class="list-group-item">
         プロジェクトコードが存在しません。PJ登録から設定してください。
     </div>`);
+     $('#PJlist tbody').append(`<td>プロジェクトコードが存在しません。PJ登録から設定してください</td>`);
     // var my_pj = 'KK-16008103@Cygnus 開発;KH-00014010@販管費：広告システム開発部;JU-00000001-0xx@2017年度auサービス運用保守業務;';
   } else {
     // PJがwebStrageから取り出せた場合
@@ -144,14 +150,26 @@
     var pj_list = get_my_pj.substr(0, get_my_pj.length - 1).split(";");
 
     // PJコードを表示させる
-    $.each(pj_list, function () {
+    $.each(pj_list, function (i) {
       var pj_data = this.split("@");
-      var text = `
+      var pj_code_data = pj_data[0].split("-");
+      pj_code_data[2] ? pj_code_data[2] : pj_code_data[2] = '';
+      var data1 = `
+      <tr>
+        <th scope="row">` + (i+1) + `</th>
+        <td>` + pj_code_data[0] + `-` + pj_code_data[1] + `-<input type="text" id="pj_val_` + i + `" value="` + pj_code_data[2] + `" size="3" /></td>
+        <td>` + pj_data[1] + `</td>
+        <td><a id="pj_change">変更を適応</a> / <label id="pj_del">削除</label></td>
+      </tr>
+      `;
+      $('#PJlist tbody').append(data1);
+
+      var data2 = `
       <a class="list-group-item">
-      <span>` + pj_data[0] + `</span>
-      <div>` + pj_data[1] + `</div>
+        <span>` + pj_data[0] + `</span>
+        <div>` + pj_data[1] + `</div>
       </a>`;
-      $('#PJnum').append(text);
+      $('#PJnum').append(data2);
     });
   }
 
@@ -194,6 +212,11 @@
     $('#PJsave').toggle();
   });
 
+  // PJ一覧ボタン押下時の表示非表示制御
+  $('#list_pj').click(function () {
+    $('#PJlist').toggle();
+  });
+
   // ログアウトボタン押したときの処理
   $('#logout_link').click(function () {
     $('#Header0011_btnLogout').click();
@@ -212,15 +235,35 @@
       location.reload();
     } else {
       console.log("なにもしない");
-      $('.collapse').collapse('toggle');
     }
   });
 
-  // プロジェクト全削除を押したときの処理
-  $('#PJsave label').click(function () {
-    window.localStorage.removeItem('myPJ');
-    location.reload();
-  });
+    // プロジェクト変更を押したときの処理
+    $('#PJlist a').click(function () {
+        var arr_num = $(this).parent().prev().prev().prev().text() - 1;
+        var pj_code_a = $(this).parent().prev().prev().text();
+        var pj_code_b = $('#pj_val_'+arr_num).val();
+        var pj_name = $(this).parent().prev().text();
+        pj_list[arr_num] = pj_code_a + pj_code_b + "@" + pj_name;
+        var pj_string = pj_list.join(';') + ';';
+        window.localStorage.setItem('myPJ', pj_string);
+        location.reload();
+    });
+
+    // プロジェクト削除を押したときの処理
+    $('#PJlist label').click(function () {
+        var arr_num = $(this).parent().prev().prev().prev().text() - 1;
+        pj_list.splice(arr_num, 1);
+        if (pj_list.length !== 0) {
+            console.log(pj_list);
+            var pj_string = pj_list.join(';') + ';';
+            window.localStorage.setItem('myPJ', pj_string);
+            location.reload();
+        } else {
+            window.localStorage.removeItem('myPJ');
+            location.reload();
+        }
+    });
 
   // -------------- プロジェクト関係 --------------
   // プロジェクトコードを選択したときの処理
@@ -231,12 +274,6 @@
     $(this).siblings().removeClass('active');
 
     var mp_arr = $(this).children('span').text().split("-");
-    if (mp_arr[2] != "0xx") {
-      mp_arr[2] = "";
-    } else {
-      // ここの処理ロジックおかしいけど、放置してる。　なおしたいひと勝手になおして。
-      mp_arr[2] = new Date().getMonth() - 2;
-    }
     $("input[name='txtProNo1']").val(mp_arr[0]);
     $("input[name='txtProNo2']").val(mp_arr[1]);
     $("input[name='txtProEdaNo']").val(mp_arr[2]);
