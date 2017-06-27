@@ -1,8 +1,12 @@
 # TamperScript
-
 ## [にっぽうにゅうりょく すくりぷと](https://github.com/YatsushiroMasato/TamperScript/raw/master/nippo.user.js)
 
+### はじめに
+
+- [TamperMonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)をインストールする
+
 ### つかいかた
+
 - [にっぽうにゅうりょく すくりぷと](https://github.com/YatsushiroMasato/TamperScript/raw/master/nippo.user.js)をクリックしてインストール
 - [日報入力](http://mediba-pjtweb01/ip_web/)にアクセス
 - ポチポチ進んでいって、実際に入力するところまで遷移
