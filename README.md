@@ -17,3 +17,16 @@
   - プロジェクト名は適当でも大丈夫です
 - 登録されたPJコードを押して、日時を押せば勝手に数値が入ります
 - 登録ボタン押しておしまい
+
+## [おぞにっぽー](https://github.com/YatsushiroMasato/TamperScript/raw/master/ozo_nippo.user.js)
+
+### はじめに
+
+- [にっぽうにゅうりょく すくりぷと](https://github.com/YatsushiroMasato/TamperScript/raw/master/nippo.user.js) がインストールされていること
+
+### つかいかた
+
+- ozoにログイン
+- 勤務表をぽちっ
+  - 勤怠が勝手に勤怠情報をブラウザに保存される
+- あとは、日報入力に進めば勝手に時間が入って計算ボタンが押される
