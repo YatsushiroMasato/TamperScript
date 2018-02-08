@@ -4,7 +4,7 @@
 // @version      ばーじょんわん！
 // @description  OZOから勤怠情報をしてきて日報に反映させるかんじのやつ
 // @author       Masato Yatsushiro <yatsushiro@mediba.jp>
-// @match        https://manage.ozo-cloud.jp/mediba/default.cfm?version=mediba&app_cd=329&fuseaction=knt
+// @match        https://manage.ozo-cloud.jp/mediba/*
 // @match        http://mediba-pjtweb01/ip_web/scripts/*
 // @grant        GM_setValue
 // @grant        GM_getValue
