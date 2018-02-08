@@ -22,11 +22,11 @@
 
 ### はじめに
 
-- [にっぽうにゅうりょく すくりぷと](https://github.com/YatsushiroMasato/TamperScript/raw/master/nippo.user.js) がインストールされていること
+- [TamperMonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=ja)をインストールする
 
 ### つかいかた
 
 - ozoにログイン
 - 勤務表をぽちっ
-  - 勤怠が勝手に勤怠情報をブラウザに保存される
+  - 勤怠が勝手に勤怠情報をブラウザに保存される
 - あとは、日報入力に進めば勝手に時間が入って計算ボタンが押される
