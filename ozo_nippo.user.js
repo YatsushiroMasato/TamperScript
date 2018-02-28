@@ -35,6 +35,13 @@
                     work_in = element.parentNode.parentNode.parentNode.nextElementSibling.children[2].textContent.trim();
                     work_out = element.parentNode.parentNode.parentNode.nextElementSibling.children[3].textContent.trim();
 
+                    if (work_in.match(/-/)){
+                        work_in = work_in.replace( /-/g , '' ) ;
+                    }
+                    if (work_out.match(/-/)){
+                        work_out = work_out.replace( /-/g , '' ) ;
+                    }
+                    
                     work_time.push(work_date+"@"+work_in+","+work_out);
                 }
             }
